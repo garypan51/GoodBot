@@ -19,7 +19,7 @@ struct ImageLoaderView: View {
             .resizable()
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.gray, lineWidth: 2))
-            .frame(width: 80, height: 90)
+            .frame(width: 50, height: 60)
     }
 }
 

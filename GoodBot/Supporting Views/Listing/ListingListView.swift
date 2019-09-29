@@ -8,33 +8,14 @@
 
 import SwiftUI
 
-struct ListingListView : View {
-    let listing: Listing
-    
-    @State var showPop = false
+struct ListingListView: View {
+    let listings: [Listing]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(listing.title)
-            .lineLimit(4)
-            Text("Upvotes: \(listing.ups)")
-        }
-        .onTapGesture {
-            self.showPop = true
-        }
-        .sheet(isPresented: $showPop) {
-            VStack {
-                Text("Hello")
-            }
+        ForEach(self.listings, id: \.name) {
+            ListingListItemView(listing: $0)
         }
     }
-    
-//    private var popView: Popover? {
-//        let pop = Popover(content: Text("Hello")){
-//            self.showPop = false
-//        }
-//        return self.showPop ? pop:nil
-//    }
 }
 
 //#if DEBUG

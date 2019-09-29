@@ -56,7 +56,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        let url = URLContexts.first!.url
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+            let params = components.queryItems else {
+                print("Invalid URL or code missing")
+            return
+        }
+        
+        if let oauthCode = params.first(where: { $0.name == "code" })?.value {
+            print("code = \(oauthCode)")
+            sessionSettings.setOauthCode(code: oauthCode)
+            // send signal back to app
+        }
+    }
 }
 

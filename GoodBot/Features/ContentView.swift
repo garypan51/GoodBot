@@ -10,20 +10,36 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sessionSettings: SessionSettings
-    @State private var profileModalPresented = false
+    @State private var showingProfile = false
+    
+    init() {
+//        UINavigationBar.appearance().backgroundColor = .purple
+    }
+    
+    var profileButton: some View {
+        Button(action: { self.showingProfile.toggle() }) {
+            Image(systemName: "person.crop.circle")
+                .imageScale(.large)
+                .accessibility(label: Text("User Profile"))
+                .padding()
+        }
+    }
     
     var body: some View {
         NavigationView {
             HomeView()
-                .navigationBarTitle(self.sessionSettings.navigationTitle)
-                .navigationBarItems(leading: Button(action: {self.showProfileModal()}) {
-                    Text("Profile")
-                })
-        }.sheet(isPresented: $profileModalPresented, content: { ProfileView() })
-    }
-    
-    func showProfileModal() {
-        profileModalPresented = true
+                .navigationBarItems(trailing: profileButton)
+
+//                .navigationBarItems(trailing: Button(action: {self.showProfileModal()}) {
+//                    Text("Profile")
+//                })
+//            .navigationBarTitle("Hello")
+
+//                .navigationBarTitle(self.sessionSettings.navigationTitle)
+                
+//            .navigationBarHidden(true)
+
+        }.sheet(isPresented: self.$showingProfile, content: { ProfileView() })
     }
 }
 

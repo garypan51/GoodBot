@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  GoodBot
+
+  Created by Gary Pan on 9/28/19.
+  Copyright © 2019 Gary Pan. All rights reserved.
+*/
+"sign_in" = "Sign In";
+"close" = "Close";

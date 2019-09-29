@@ -9,34 +9,19 @@
 import SwiftUI
 
 struct SubredditListView: View {
-    let subreddit: Subreddit
-
-    var body : some View {
-        VStack {
-            ImageLoaderView(imageUrl: subreddit.icon_img != "" ? subreddit.icon_img : subreddit.header_img)
-            Text("r/\(subreddit.display_name)")
-                .font(Font.system(size: 12, design: .default))
-        }.onTapGesture {
-//                self.onTap(self.subreddit.display_name)
-        }
-    }
-}
-
-struct SubredditList: View {
-    let subreddits: [Subreddit]
+    var subreddits: [Subreddit]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                Text("Hello")
+                NavigationLink(destination: ListingDetailView()) {
+                    Text("See\nAll")
+                }
                 ForEach(self.subreddits, id: \.name) {
-                    SubredditListView(subreddit: $0)
+                    SubredditListItemView(subreddit: $0)
                 }
             }
         }
-    }
-    func fake(s: String) {
-        
     }
 }
 

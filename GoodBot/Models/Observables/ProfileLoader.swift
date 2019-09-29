@@ -1,16 +1,16 @@
 //
-//  LisingLoader.swift
+//  ProfileLoader.swift
 //  GoodBot
 //
-//  Created by Gary Pan on 8/3/19.
+//  Created by Gary Pan on 9/22/19.
 //  Copyright © 2019 Gary Pan. All rights reserved.
 //
 
 import SwiftUI
 import Combine
 
-class ListingLoader: ObservableObject {
-    @Published var listings: [Listing] = []
+class ProfileLoader: ObservableObject {
+    @Published var profile: [Listing] = []
     
     private var listingsUrl = ""
     
@@ -27,7 +27,7 @@ class ListingLoader: ObservableObject {
             
             DispatchQueue.main.async {
                 for listing in listingResponse!.data.children {
-                    self.listings.append(listing.data)
+                    self.profile.append(listing.data)
 //                    print(listing.data.title)
                 }
             }
@@ -50,3 +50,5 @@ class ListingLoader: ObservableObject {
 //        loadInitialListings()
     }
 }
+
+

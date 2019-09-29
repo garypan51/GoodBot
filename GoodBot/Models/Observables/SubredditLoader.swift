@@ -47,7 +47,7 @@ class SubredditsLoader: ObservableObject {
         }
     }
     
-    init() {
-        loadSubreddits()
-    }
+//    init() {
+//        loadSubreddits()
+//    }
 }

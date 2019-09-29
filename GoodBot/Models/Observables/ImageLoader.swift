@@ -11,13 +11,7 @@ import SwiftUI
 import Combine
 
 final class ImageLoader: ObservableObject {
-    var willChange = PassthroughSubject<Data, Never>()
-    
-    var data = Data() {
-        willSet {
-            willChange.send(data)
-        }
-    }
+    @Published var data = Data()
     
     init(imageUrl: String) {
         guard let url = URL(string: imageUrl) else {return}

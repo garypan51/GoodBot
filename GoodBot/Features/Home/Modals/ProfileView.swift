@@ -10,10 +10,13 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
+        // if not signed in show sign in oauth modal
+        
+        // else show profile
         ScrollView {
-            Text("Hello World!")
-            Text("Hello World!")
-            Text("Hello World!")
+            Text("Name")
+            Text("UserName")
+            Text("Karma")
         }
     }
 }
