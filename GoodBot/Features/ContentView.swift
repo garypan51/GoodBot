@@ -16,29 +16,37 @@ struct ContentView: View {
 //        UINavigationBar.appearance().backgroundColor = .purple
     }
     
+//    var profileButton: some View {
+//        Button(action: { self.showingProfile.toggle() }) {
+//            Image(systemName: "person.crop.circle")
+//                .imageScale(.large)
+//                .accessibility(label: Text("User Profile"))
+//                .padding()
+//        }
+//    }
     var profileButton: some View {
-        Button(action: { self.showingProfile.toggle() }) {
+        NavigationLink(destination: ProfileModalView(oauthCode: $sessionSettings.oauthCode)) {
             Image(systemName: "person.crop.circle")
-                .imageScale(.large)
-                .accessibility(label: Text("User Profile"))
-                .padding()
+            .imageScale(.large)
+            .accessibility(label: Text("User Profile"))
+            .padding()
+        }
+    }
+    
+    var mySubredditsButton: some View {
+        NavigationLink(destination: MySubredditsView()) {
+            Image(systemName: "person.crop.circle")
+            .imageScale(.large)
+            .accessibility(label: Text("User Profile"))
+            .padding()
         }
     }
     
     var body: some View {
         NavigationView {
             HomeView()
-                .navigationBarItems(trailing: profileButton)
-
-//                .navigationBarItems(trailing: Button(action: {self.showProfileModal()}) {
-//                    Text("Profile")
-//                })
-//            .navigationBarTitle("Hello")
-
-//                .navigationBarTitle(self.sessionSettings.navigationTitle)
-                
-//            .navigationBarHidden(true)
-
+                .navigationBarItems(leading: mySubredditsButton, trailing: profileButton)
+                .navigationBarTitle("Front Page")
         }.sheet(isPresented: self.$showingProfile, content: { ProfileView() })
     }
 }

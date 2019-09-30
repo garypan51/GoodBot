@@ -9,16 +9,17 @@
 import SwiftUI
     
 struct BackgroundView<Content>: View where Content: View {
-    private var backgroundColor: Color
+    private var backgroundColor: Color?
     private var childView: () -> Content
+
     
-    init(backgroundColor: Color, @ViewBuilder _ view: @escaping () -> Content) {
+    init(backgroundColor: Color? = Color("backgroundColor"), @ViewBuilder _ view: @escaping () -> Content) {
         self.backgroundColor = backgroundColor
         self.childView = view
     }
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             backgroundColor
                 .edgesIgnoringSafeArea(.all)
             self.childView()

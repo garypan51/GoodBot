@@ -15,6 +15,8 @@ class ListingLoader: ObservableObject {
     private var listingsUrl = ""
     
     private func loadListings(listingUrl: String) {
+        print("Listing loader loadLostings ")
+
         guard let url = URL(string: self.listingsUrl) else { return }
         var listingResponse: ListingResponse? = nil
         URLSession.shared.dataTask(with: url) { (data, _, _) in
@@ -47,6 +49,7 @@ class ListingLoader: ObservableObject {
     
     init(listingsUrl: String) {
         self.listingsUrl = listingsUrl
+        print("Listing loader init")
 //        loadInitialListings()
     }
 }

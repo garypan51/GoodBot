@@ -14,16 +14,18 @@ struct ListingListItemView : View {
     @State var showPop = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(listing.title)
-                .lineLimit(nil)
-            Text("Upvotes: \(listing.ups)")
-        }
+        BackgroundView {
+            VStack(alignment: .leading) {
+                Text(self.listing.title)
+                .fixedSize(horizontal: false, vertical: true)
+                Text("Upvotes: \(self.listing.ups)")
+            }
+            }.padding()
         .onTapGesture {
             self.showPop = true
         }
         .sheet(isPresented: $showPop) {
-            Text("Hello")
+            ListingDetailView()
         }
     }
 }

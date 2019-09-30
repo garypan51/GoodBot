@@ -12,8 +12,12 @@ struct ListingListView: View {
     let listings: [Listing]
     
     var body: some View {
-        ForEach(self.listings, id: \.name) {
-            ListingListItemView(listing: $0)
+        ScrollView {
+            ForEach(self.listings, id: \.name) {
+                ListingListItemView(listing: $0)
+            }
+            Text("Loading")
+                .onAppear(perform: {print("Hi")})
         }
     }
 }

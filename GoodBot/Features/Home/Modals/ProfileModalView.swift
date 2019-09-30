@@ -9,32 +9,20 @@
 import SwiftUI
 
 struct ProfileModalView: View {
-    @Binding var show: Bool
     @Binding var oauthCode: String?
-
-    var closeButton: some View {
-        HStack() {
-            Button(action: {
-                self.show.toggle()
-            } ) {
-                Text("close".localized())
-            }.padding(.init(arrayLiteral: [.horizontal, .top]))
-            Spacer()
-        }
-    }
     
     var body: some View {
-        VStack {
-            closeButton
-            if self.oauthCode == nil {
-                SignInView(oauthCode: $oauthCode)
-            } else {
-                ActivityIndicatorContainerView {
-                    Text("Done")
+        BackgroundView(backgroundColor: Color("backgroundColor")) {
+            VStack {
+                if self.oauthCode == nil {
+                    SignInView(oauthCode: self.$oauthCode)
+                } else {
+                    ActivityIndicatorContainerView {
+                        Text("Done")
+                    }
                 }
             }
         }
-
     }
 }
 

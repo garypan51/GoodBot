@@ -37,6 +37,7 @@
 		FDAC9C912300D19A00D491D3 /* ListingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC9C902300D19A00D491D3 /* ListingDetailViewModel.swift */; };
 		FDBBBB4C234159C40071FE31 /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBBB4B234159C40071FE31 /* ProfileModalView.swift */; };
 		FDBBBB4E23415B650071FE31 /* SecretConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBBB4D23415B650071FE31 /* SecretConstants.swift */; };
+		FDBBBB522341640E0071FE31 /* MySubredditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBBB512341640E0071FE31 /* MySubredditsView.swift */; };
 		FDD27E2622F2C6ED00C5BD1E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD27E2522F2C6ED00C5BD1E /* HomeView.swift */; };
 		FDD27E2922F2CC0D00C5BD1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD27E2822F2CC0D00C5BD1E /* ProfileView.swift */; };
 		FDFC0351234074870052E3DA /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFC0350234074870052E3DA /* WKWebViewController.swift */; };
@@ -77,6 +78,7 @@
 		FDAC9C902300D19A00D491D3 /* ListingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewModel.swift; sourceTree = "<group>"; };
 		FDBBBB4B234159C40071FE31 /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
 		FDBBBB4D23415B650071FE31 /* SecretConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstants.swift; sourceTree = "<group>"; };
+		FDBBBB512341640E0071FE31 /* MySubredditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySubredditsView.swift; sourceTree = "<group>"; };
 		FDD27E2522F2C6ED00C5BD1E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = GoodBot/Features/HomeView.swift; sourceTree = SOURCE_ROOT; };
 		FDD27E2822F2CC0D00C5BD1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FDFC0350234074870052E3DA /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
@@ -98,8 +100,6 @@
 		FD04CC7722F578FF00CB6567 /* Listing */ = {
 			isa = PBXGroup;
 			children = (
-				FD04CC7822F5791200CB6567 /* ListingListView.swift */,
-				FD31A22022F9579F00F6E484 /* ListingListItemView.swift */,
 			);
 			path = Listing;
 			sourceTree = "<group>";
@@ -175,6 +175,7 @@
 			children = (
 				FD09CAA922F16B3B00388B9A /* ContentView.swift */,
 				FD09CABB22F16B8C00388B9A /* Home */,
+				FDBBBB4F234163F00071FE31 /* Subreddits */,
 				FD09CABC22F16B9100388B9A /* Listing */,
 			);
 			path = Features;
@@ -192,6 +193,8 @@
 		FD09CABC22F16B9100388B9A /* Listing */ = {
 			isa = PBXGroup;
 			children = (
+				FD04CC7822F5791200CB6567 /* ListingListView.swift */,
+				FD31A22022F9579F00F6E484 /* ListingListItemView.swift */,
 				FD283EB622F92D27000A7C47 /* ListingDetailView.swift */,
 			);
 			path = Listing;
@@ -229,6 +232,22 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FDBBBB4F234163F00071FE31 /* Subreddits */ = {
+			isa = PBXGroup;
+			children = (
+				FDBBBB50234163F90071FE31 /* Users Subreddits */,
+			);
+			path = Subreddits;
+			sourceTree = "<group>";
+		};
+		FDBBBB50234163F90071FE31 /* Users Subreddits */ = {
+			isa = PBXGroup;
+			children = (
+				FDBBBB512341640E0071FE31 /* MySubredditsView.swift */,
+			);
+			path = "Users Subreddits";
 			sourceTree = "<group>";
 		};
 		FDD27E2222F2C59400C5BD1E /* Models */ = {
@@ -382,6 +401,7 @@
 				FD04CC7922F5791200CB6567 /* ListingListView.swift in Sources */,
 				FDA782FB233867310038CD8C /* SignInView.swift in Sources */,
 				FD177F42233DED33006B2C6B /* UserDefaultsConstants.swift in Sources */,
+				FDBBBB522341640E0071FE31 /* MySubredditsView.swift in Sources */,
 				FDA782F7233866F90038CD8C /* WebView.swift in Sources */,
 				FDA782F523381B900038CD8C /* ProfileLoader.swift in Sources */,
 				FDFC035A234089A10052E3DA /* StringExtensions.swift in Sources */,
