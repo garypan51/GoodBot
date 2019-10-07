@@ -25,7 +25,7 @@ struct ContentView: View {
 //        }
 //    }
     var profileButton: some View {
-        NavigationLink(destination: ProfileModalView(oauthCode: $sessionSettings.oauthCode)) {
+        NavigationLink(destination: ProfileModalView()) {
             Image(systemName: "person.crop.circle")
             .imageScale(.large)
             .accessibility(label: Text("User Profile"))
@@ -47,7 +47,7 @@ struct ContentView: View {
             HomeView()
                 .navigationBarItems(leading: mySubredditsButton, trailing: profileButton)
                 .navigationBarTitle("Front Page")
-        }.sheet(isPresented: self.$showingProfile, content: { ProfileView() })
+        }
     }
 }
 

@@ -9,16 +9,19 @@
 import SwiftUI
 
 struct ProfileModalView: View {
-    @Binding var oauthCode: String?
-    
+    @EnvironmentObject var sessionSettings: SessionSettings
+
     var body: some View {
-        BackgroundView(backgroundColor: Color("backgroundColor")) {
-            VStack {
-                if self.oauthCode == nil {
-                    SignInView(oauthCode: self.$oauthCode)
-                } else {
-                    ActivityIndicatorContainerView {
-                        Text("Done")
+        GeometryReader { geometry in
+            BackgroundView(backgroundColor: Color("backgroundColor")) {
+                VStack {
+                    if self.sessionSettings.oauthCode == nil {
+//                    if false {
+                        SignInView(oauthCode: self.$sessionSettings.oauthCode)
+                    } else {
+                        ActivityIndicatorContainerView {
+                            ProfileView(oauthCode: self.$sessionSettings.oauthCode)
+                        }.frame(width: geometry.size.width, height: geometry.size.height)
                     }
                 }
             }

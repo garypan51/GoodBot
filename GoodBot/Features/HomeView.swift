@@ -36,7 +36,11 @@ struct HomeView: View {
         }
         .onAppear(perform: {
             print("onAppear")
-
+            if let token = UserRepository.shared.loadAccessToken() {
+                print(token.dateCreated)
+            }
+            
+//            print(token!.accessToken)
 //            self.subredditsLoader.loadSubreddits()
             self.listingLoader.loadInitialListings()
         })

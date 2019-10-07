@@ -10,16 +10,22 @@ import SwiftUI
 
 struct ActivityIndicatorContainerView<Content>: View where Content: View {
     private var childView: () -> Content
+    var isLoading: Bool
+    var blurRadius: Int
     
-    init(@ViewBuilder _ view: @escaping () -> Content) {
+    init(isLoading: Bool = true, blurRadius: Int = 0, @ViewBuilder _ view: @escaping () -> Content) {
+        self.isLoading = isLoading
+        self.blurRadius = blurRadius
         self.childView = view
     }
     
     var body: some View {
         ZStack(alignment: .center) {
             self.childView()
-//                .blur(radius: 6)
-            ActivityIndicatorView(isAnimating: .constant(true), style: .large)
+                .blur(radius: CGFloat(blurRadius))
+            if isLoading {
+                ActivityIndicatorView(isAnimating: .constant(true), style: .large)
+            }
         }
     }
 }

@@ -13,29 +13,27 @@ class ListingLoader: ObservableObject {
     @Published var listings: [Listing] = []
     
     private var listingsUrl = ""
+    private var cancellable: AnyCancellable? = nil
     
     private func loadListings(listingUrl: String) {
         print("Listing loader loadLostings ")
 
         guard let url = URL(string: self.listingsUrl) else { return }
-        var listingResponse: ListingResponse? = nil
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data else {return}
-            do {
-                listingResponse = try JSONDecoder().decode(ListingResponse.self, from: data)
-            } catch let parseError {
-                print("parsing error: \(parseError)")
-            }
-            
-            DispatchQueue.main.async {
-                for listing in listingResponse!.data.children {
-                    self.listings.append(listing.data)
-//                    print(listing.data.title)
+        self.cancellable = HttpClient.shared.get(url: url, decodable: ListingResponse.self)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            }
-            
-//            print("Completed")
-        }.resume()
+            }, receiveValue: { listingResponse in
+                DispatchQueue.main.async {
+                    for listing in listingResponse.data.children {
+                        self.listings.append(listing.data)
+                    }
+                }
+            })
     }
     
     func loadInitialListings() {
@@ -50,6 +48,5 @@ class ListingLoader: ObservableObject {
     init(listingsUrl: String) {
         self.listingsUrl = listingsUrl
         print("Listing loader init")
-//        loadInitialListings()
     }
 }
