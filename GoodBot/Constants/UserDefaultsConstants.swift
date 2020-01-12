@@ -9,6 +9,4 @@
 import Foundation
 
 struct UserDefaultsConstants {
-    //App Constants
-    static let APP_NAME = "YOUR_APP_NAME"
 }

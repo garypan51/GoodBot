@@ -13,28 +13,10 @@ struct ContentView: View {
     @State private var showingProfile = false
     
     init() {
-//        UINavigationBar.appearance().backgroundColor = .purple
     }
     
-//    var profileButton: some View {
-//        Button(action: { self.showingProfile.toggle() }) {
-//            Image(systemName: "person.crop.circle")
-//                .imageScale(.large)
-//                .accessibility(label: Text("User Profile"))
-//                .padding()
-//        }
-//    }
     var profileButton: some View {
         NavigationLink(destination: ProfileModalView()) {
-            Image(systemName: "person.crop.circle")
-            .imageScale(.large)
-            .accessibility(label: Text("User Profile"))
-            .padding()
-        }
-    }
-    
-    var mySubredditsButton: some View {
-        NavigationLink(destination: MySubredditsView()) {
             Image(systemName: "person.crop.circle")
             .imageScale(.large)
             .accessibility(label: Text("User Profile"))
@@ -45,7 +27,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             HomeView()
-                .navigationBarItems(leading: mySubredditsButton, trailing: profileButton)
+                .navigationBarItems(trailing: profileButton)
                 .navigationBarTitle("Front Page")
         }
     }

@@ -11,7 +11,7 @@ import SwiftUI
 struct ListingDetailView: View {
     var body: some View {
         BackgroundView {
-            Text("Hello World!")
+            Text("ListingDetailView")
         }
     }
 }

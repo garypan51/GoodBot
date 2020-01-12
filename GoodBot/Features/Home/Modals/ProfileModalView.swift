@@ -16,7 +16,6 @@ struct ProfileModalView: View {
             BackgroundView(backgroundColor: Color("backgroundColor")) {
                 VStack {
                     if self.sessionSettings.oauthCode == nil {
-//                    if false {
                         SignInView(oauthCode: self.$sessionSettings.oauthCode)
                     } else {
                         ActivityIndicatorContainerView {
